@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Volei Stars</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="Icon/favicon-32x32.png">
+
+<link rel="icon" type="image/png" sizes="32x32" href="Icon/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="Icon/favicon-16x16.png">
 <link rel="shortcut icon" href="Icon/favicon.ico">
 
@@ -16,7 +17,6 @@ body {
     color: white;
 }
 
-/* FUNDO */
 /* FUNDO */
 .background {
     position: fixed;
@@ -39,7 +39,6 @@ body {
     box-shadow: 0 0 10px #8ac6ff;
 }
 
-/* POSIÇÕES DIFERENTES */
 .background span:nth-child(1) { left: 10%; animation-duration: 8s; }
 .background span:nth-child(2) { left: 25%; animation-duration: 12s; width: 6px; height: 6px;}
 .background span:nth-child(3) { left: 40%; animation-duration: 10s;}
@@ -59,41 +58,64 @@ body {
     padding: 60px 20px;
 }
 
+/* FOTO PERFIL */
 .profile img {
-    width: 180px;
-    border-radius: 20px;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    object-fit: contain;
+    border: 3px solid #8ac6ff;
+    box-shadow: 0 0 20px #00aaff;
 }
 
+/* TEXTOS */
 .profile h1 {
     margin: 20px 0 10px;
     color: #8ac6ff;
     text-shadow: 0 0 15px #00aaff;
 }
 
-.profile p {
-    opacity: 0.7;
-}
-
 /* SOCIAL */
 .social {
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
-.social a {
-    font-size: 20px;
+.social-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.social-box img {
+    width: 50px;
+}
+
+.social-box a {
+    font-size: 30px;
     text-decoration: none;
     color: #8ac6ff;
 }
 
-/* SEÇÃO */
-.section {
-    padding: 40px 20px;
+/* WHATS */
+.whats {
     text-align: center;
+    margin-top: 20px;
 }
 
-.section h2 {
-    color: #0571d3;
-    margin-bottom: 20px;
+.whats p {
+    margin-bottom: 10px;
+    color: #8ac6ff;
+}
+
+.whats button {
+    padding: 12px 25px;
+    background: #00aaff;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
 }
 
 /* CARDS */
@@ -102,6 +124,7 @@ body {
     justify-content: center;
     gap: 20px;
     flex-wrap: wrap;
+    padding: 40px 20px;
 }
 
 .card {
@@ -109,6 +132,7 @@ body {
     padding: 20px;
     border-radius: 15px;
     width: 250px;
+    text-align: center;
     transition: 0.3s;
 }
 
@@ -120,164 +144,127 @@ body {
 .card h3 {
     color: #8ac6ff;
 }
+
+.card button {
+    margin-top: 10px;
+    padding: 10px;
+    border: none;
+    background: #00aaff;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* FOOTER */
+footer {
+    margin-top: 60px;
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+    color: #8ac6ff;
+    opacity: 0.7;
+    border-top: 1px solid rgba(138, 198, 255, 0.2);
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+
+    .cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 90%;
+    }
+
+    .profile img {
+        width: 160px;
+        height: 160px;
+    }
+
+    .social-box a {
+        font-size: 22px;
+    }
+
+}
 </style>
 </head>
 
 <body>
 
-<!-- FUNDO -->
 <div class="background">
 <span></span><span></span><span></span>
 <span></span><span></span><span></span>
 </div>
 
-<!-- PERFIL -->
 <div class="profile">
-    <img src="Imagens/image_2026-04-08_184055219-removebg-preview.png" 
-     style="
-     width: 220px;
-     height: 220px;
-     border-radius: 100%;
-     object-fit: contain;
-     border: 3px solid #8ac6ff;
-     box-shadow: 0 0 20px #00aaff;
-     ">
     
+    <img src="Imagens/image_2026-04-08_184055219-removebg-preview.png">
+
     <h1>Volei Stars</h1>
     <p><b>Transformando jogadores em estrelas ⭐</b></p>
 
-    <div class="social" style="display: flex; justify-content: center; margin-top: 30px;">
+    <div class="social">
+        <div class="social-box">
+            <img src="Imagens/Blackvariant-Button-Ui-Requests-14-Instagram.512.png">
+            <a href="https://www.instagram.com/volei.stars/" target="_blank">
+                @volei.stars
+            </a>
+        </div>
+    </div>
 
-    <div style="display: flex; align-items: center; gap: 10px;">
-        
-        <img src="Imagens/Blackvariant-Button-Ui-Requests-14-Instagram.512.png"
-             style="width: 50px;">
-
-        <a href="https://www.instagram.com/volei.stars/" 
-           target="_blank"
-           style="font-size: 30px; text-decoration: none; color: #8ac6ff; font-family: Trebuchet MS, Lucida Sans">
-           @volei.stars
-        </a>
-
-        
+    <div class="whats">
+        <p><b>Tire suas dúvidas aqui</b></p>
         <a href="https://wa.me/555189967258" target="_blank">
-            <p style="
-  margin-bottom: -15px;
-  color: #8ac6ff;
-  font-size: 20px;
-  opacity: 0.8;">
-    <b>Tire suas dúvidas aqui</b>
-  </p>
-
-<button style="
-margin: 20px;
-padding: 15px 25px;
-background: #00aaff;
-border: none;
-border-radius: 10px;
-color: white;
-font-size: 15px;
-cursor: pointer;">
-<b>Falar no WhatsApp</b>
-</button>
-</a>
-
+            <button>Falar no WhatsApp</button>
+        </a>
     </div>
 
 </div>
 
-<!-- PACOTES -->
 <div class="cards">
 
     <div class="card">
         <h3>Iniciante</h3>
-        <p style="font-size: 28px; color: #8ac6ff;"><b>R$ 49</b></p>
-        
-        <b>
-            <p>✔ Treino básico</p>
-            <p>✔ Fundamentos</p>
-            <p>✔ 1x por semana</p>
-        </b>
-        
+        <p style="font-size: 28px;"><b>R$ 49</b></p>
+        <p>✔ Treino básico</p>
+        <p>✔ Fundamentos</p>
+        <p>✔ 1x por semana</p>
         <a href="https://wa.me/555189967258?text=Quero%20o%20plano%20Iniciante" target="_blank">
-        <button style="
-margin-top: 10px;
-padding: 10px;
-border: none;
-background: #00aaff;
-color: white;
-border-radius: 8px;
-cursor: pointer;">
-    <b>Escolher Plano</b>
-    </button>
+            <button><b>Escolher Plano</b></button>
+        </a>
     </div>
-    </a>
 
     <div class="card">
         <h3>Intermediário</h3>
-        <p style="font-size: 28px; color: #00aaff;"><b>R$ 89</b></p>
-        
-        <b>
-            <p>✔ Treinos avançados</p>
-            <p>✔ Técnicas de jogo</p>
-            <p>✔ 2x por semana</p>
-            <p>✔ Acompanhamento</p>
-        </b>
-
-        <a href="https://wa.me/555189967258?text=Quero%20o%20plano%20intermediário" target="_blank">
-        <button style="
-margin-top: 10px;
-padding: 10px;
-border: none;
-background: #00aaff;
-color: white;
-border-radius: 8px;
-cursor: pointer;">
-<b>Escolher Plano</b>
-</button>
+        <p style="font-size: 28px;"><b>R$ 89</b></p>
+        <p>✔ Treinos avançados</p>
+        <p>✔ Técnicas de jogo</p>
+        <p>✔ 2x por semana</p>
+        <p>✔ Acompanhamento</p>
+        <a href="https://wa.me/555189967258?text=Quero%20o%20plano%20Intermediário" target="_blank">
+            <button><b>Escolher Plano</b></button>
+        </a>
     </div>
-    </a>
 
     <div class="card">
         <h3>Avançado</h3>
-        <p style="font-size: 28px; color: #8ac6ff;"><b>R$ 149</b></p>
-        
-        <b>
-            <p>✔ Treino profissional</p>
-            <p>✔ Estratégias de jogo</p>
-            <p>✔ 3x por semana</p>
-            <p>✔ Suporte completo</p>
-        </b>
-
+        <p style="font-size: 28px;"><b>R$ 149</b></p>
+        <p>✔ Treino profissional</p>
+        <p>✔ Estratégias de jogo</p>
+        <p>✔ 3x por semana</p>
+        <p>✔ Suporte completo</p>
         <a href="https://wa.me/555189967258?text=Quero%20o%20plano%20Avançado" target="_blank">
-        <button style="
-margin-top: 10px;
-padding: 10px;
-border: none;
-background: #00aaff;
-color: white;
-border-radius: 8px;
-cursor: pointer;">
-<b>Escolher Plano</b>
-</button>
-    </a>
+            <button><b>Escolher Plano</b></button>
+        </a>
     </div>
 
+</div>
 
-<footer style="
-margin-top: 60px;
-padding: 20px;
-text-align: center;
-font-size: 14px;
-color: #8ac6ff;
-opacity: 0.7;
-border-top: 1px solid rgba(138, 198, 255, 0.2);
-width: 100%;
-">
-
+<footer>
   <p>© 2026 Volei Stars. Todos os direitos reservados.</p>
   <p>Este site é apenas informativo. Valores podem variar.</p>
-
 </footer>
 
 </body>
