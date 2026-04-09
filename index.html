@@ -1,278 +1,313 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Volei Stars</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Volei Stars</title>
 
-<link rel="icon" type="image/png" sizes="32x32" href="Icon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="Icon/favicon-16x16.png">
-<link rel="shortcut icon" href="Icon/favicon.ico">
+  <!-- SEO -->
+  <meta name="description" content="Volei Stars – Transformando jogadores em estrelas. Escolha seu plano de treino de vôlei e evolua com a gente!">
 
-<style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #212121;
-    color: white;
-    animation: fadeIn 1s ease-in;
-}
+  <!-- Open Graph (compartilhamento no WhatsApp, Instagram, etc.) -->
+  <meta property="og:title" content="Volei Stars">
+  <meta property="og:description" content="Transformando jogadores em estrelas ⭐. Conheça nossos planos de treino!">
+  <meta property="og:type" content="website">
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="Icon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="Icon/favicon-16x16.png">
+  <link rel="shortcut icon" href="Icon/favicon.ico">
 
-/* FUNDO */
-.background {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    overflow: hidden;
-}
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #212121;
+      color: white;
+      animation: fadeIn 1s ease-in;
+    }
 
-.background span {
-    position: absolute;
-    bottom: -50px;
-    width: 12px;
-    height: 12px;
-    background: rgba(138, 198, 255, 0.6);
-    border-radius: 50%;
-    animation: subir 6s linear infinite;
-    box-shadow: 0 0 10px #8ac6ff;
-}
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
 
-.background span:nth-child(1){left:10%}
-.background span:nth-child(2){left:25%}
-.background span:nth-child(3){left:40%}
-.background span:nth-child(4){left:60%}
-.background span:nth-child(5){left:75%}
-.background span:nth-child(6){left:90%}
+    /* FUNDO */
+    .background {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
 
-@keyframes subir {
-    0% {transform: translateY(0); opacity:0;}
-    10% {opacity:1;}
-    100% {transform: translateY(-110vh); opacity:0;}
-}
+    .background span {
+      position: absolute;
+      bottom: -50px;
+      width: 12px;
+      height: 12px;
+      background: rgba(138, 198, 255, 0.6);
+      border-radius: 50%;
+      animation: subir 6s linear infinite;
+      box-shadow: 0 0 10px #8ac6ff;
+    }
 
-/* PERFIL */
-.profile {
-    text-align: center;
-    padding: 60px 20px;
-}
+    .background span:nth-child(1) { left: 10%; animation-delay: 0s; }
+    .background span:nth-child(2) { left: 25%; animation-delay: 1s; }
+    .background span:nth-child(3) { left: 40%; animation-delay: 2s; }
+    .background span:nth-child(4) { left: 60%; animation-delay: 3s; }
+    .background span:nth-child(5) { left: 75%; animation-delay: 4s; }
+    .background span:nth-child(6) { left: 90%; animation-delay: 5s; }
 
-.profile img {
-    width: 220px;
-    height: 220px;
-    border-radius: 50%;
-    object-fit: contain;
-    border: 3px solid #8ac6ff;
-    box-shadow: 0 0 20px #00aaff;
-}
+    @keyframes subir {
+      0%   { transform: translateY(0); opacity: 0; }
+      10%  { opacity: 1; }
+      100% { transform: translateY(-110vh); opacity: 0; }
+    }
 
-.profile h1 {
-    margin: 20px 0 10px;
-    color: #8ac6ff;
-    text-shadow: 0 0 15px #00aaff;
-}
-
-/* SOCIAL */
-.social-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-.social-box img {
-    width: 35px;
-    height: 35px;
-}
-
-.social-box a {
-    font-size: 25px;
-    color: #8ac6ff;
-    text-decoration: none;
-}
-
-/* WHATS */
-.whats {
-    margin-top: 20px;
-}
-
-.whats button {
-    padding: 12px 25px;
-    background: linear-gradient(45deg, #00aaff, #0571d3);
-    border: none;
-    border-radius: 10px;
-    color: white;
-    cursor: pointer;
-}
-
-/* CARDS */
-.cards {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    padding: 40px 20px;
-}
-
-.card {
-    background: #2a2a2a;
-    padding: 20px;
-    border-radius: 15px;
-    width: 250px;
-    text-align: center;
-    transition: 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 0 20px #00aaff;
-}
-
-.card h3 {
-    color: #8ac6ff;
-}
-
-.card p:first-of-type {
-    font-size: 32px;
-    color: #00aaff;
-}
-
-.card button {
-    margin-top: 10px;
-    padding: 10px;
-    border: none;
-    background: #00aaff;
-    color: white;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-/* DESTAQUE */
-.destaque {
-    border: 2px solid #00aaff;
-    box-shadow: 0 0 15px #00aaff;
-}
-
-/* FOOTER */
-footer {
-    margin-top: 60px;
-    padding: 20px;
-    text-align: center;
-    font-size: 14px;
-    color: #8ac6ff;
-}
-
-/* BOTÃO FIXO */
-.whatsapp-fixo {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #00aaff;
-    color: white;
-    font-size: 24px;
-    padding: 15px;
-    border-radius: 50%;
-    text-decoration: none;
-}
-
-.whatsapp-fixo:hover {
-    transform: scale(1.1);
-}
-
-/* MOBILE */
-@media (max-width: 768px) {
-
-    .card {
-        width: 90%;
+    /* PERFIL */
+    .profile {
+      text-align: center;
+      padding: 60px 20px;
     }
 
     .profile img {
-        width: 160px;
-        height: 160px;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: contain;
+      border: 3px solid #8ac6ff;
+      box-shadow: 0 0 20px #00aaff;
+    }
+
+    .profile h1 {
+      margin: 20px 0 10px;
+      color: #8ac6ff;
+      text-shadow: 0 0 15px #00aaff;
+    }
+
+    /* SOCIAL */
+    .social-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
     }
 
     .social-box img {
+      width: 35px;
+      height: 35px;
+    }
+
+    .social-box a {
+      font-size: 25px;
+      color: #8ac6ff;
+      text-decoration: none;
+    }
+
+    /* WHATS */
+    .whats {
+      margin-top: 20px;
+    }
+
+    .whats button {
+      padding: 12px 25px;
+      background: linear-gradient(45deg, #00aaff, #0571d3);
+      border: none;
+      border-radius: 10px;
+      color: white;
+      cursor: pointer;
+      font-size: 16px;
+      transition: opacity 0.2s;
+    }
+
+    .whats button:hover {
+      opacity: 0.85;
+    }
+
+    /* CARDS */
+    .cards {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding: 40px 20px;
+    }
+
+    .card {
+      background: #2a2a2a;
+      padding: 20px;
+      border-radius: 15px;
+      width: 250px;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 20px #00aaff;
+    }
+
+    .card h3 {
+      color: #8ac6ff;
+    }
+
+    .card p:first-of-type {
+      font-size: 32px;
+      color: #00aaff;
+    }
+
+    .card button {
+      margin-top: 10px;
+      padding: 10px;
+      border: none;
+      background: #00aaff;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 15px;
+      transition: opacity 0.2s;
+    }
+
+    .card button:hover {
+      opacity: 0.85;
+    }
+
+    /* DESTAQUE */
+    .destaque {
+      border: 2px solid #00aaff;
+      box-shadow: 0 0 15px #00aaff;
+    }
+
+    /* FOOTER */
+    footer {
+      margin-top: 60px;
+      padding: 20px;
+      text-align: center;
+      font-size: 14px;
+      color: #8ac6ff;
+    }
+
+    /* BOTÃO FIXO */
+    .whatsapp-fixo {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #00aaff;
+      color: white;
+      font-size: 24px;
+      padding: 15px;
+      border-radius: 50%;
+      text-decoration: none;
+      transition: transform 0.2s;
+    }
+
+    .whatsapp-fixo:hover {
+      transform: scale(1.1);
+    }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      .card {
+        width: 90%;
+      }
+
+      .profile img {
+        width: 160px;
+        height: 160px;
+      }
+
+      .social-box img {
         width: 25px;
         height: 25px;
+      }
     }
-}
-</style>
+  </style>
 </head>
 
 <body>
 
-<div class="background">
-<span></span><span></span><span></span>
-<span></span><span></span><span></span>
-</div>
+  <div class="background">
+    <span></span><span></span><span></span>
+    <span></span><span></span><span></span>
+  </div>
 
-<div class="profile">
-    
-    <img src="Imagens/image_2026-04-08_184055219-removebg-preview.png">
+  <div class="profile">
+
+    <!-- CORREÇÃO: alt adicionado na imagem de perfil -->
+    <img src="Imagens/image_2026-04-08_184055219-removebg-preview.png" alt="Logo Volei Stars" loading="lazy">
 
     <h1>Volei Stars</h1>
     <p>Transformando jogadores em estrelas ⭐</p>
 
     <div class="social-box">
-        <img src="Imagens/Blackvariant-Button-Ui-Requests-14-Instagram.512.png">
-        <a href="https://www.instagram.com/volei.stars/" target="_blank">
-            @volei.stars
-        </a>
+      <!-- CORREÇÃO: alt adicionado no ícone do Instagram -->
+      <img src="Imagens/Blackvariant-Button-Ui-Requests-14-Instagram.512.png" alt="Instagram" loading="lazy">
+      <a href="https://www.instagram.com/volei.stars/" target="_blank" rel="noopener noreferrer">
+        @volei.stars
+      </a>
     </div>
 
     <div class="whats">
-        <p>Tire suas dúvidas aqui</p>
-        <a href="https://wa.me/555189967258" target="_blank">
-            <button>Falar no WhatsApp</button>
-        </a>
+      <p>Tire suas dúvidas aqui</p>
+      <!-- CORREÇÃO: <a> dentro de <button> substituído por button com onclick -->
+      <button onclick="window.open('https://wa.me/555189967258', '_blank')">
+        Falar no WhatsApp
+      </button>
     </div>
 
-</div>
+  </div>
 
-<h2 style="text-align:center;">Confira nossos pacotes</h2>
+  <h2 style="text-align:center;">Confira nossos pacotes</h2>
 
-<div class="cards">
+  <div class="cards">
 
     <div class="card">
-        <h3>Iniciante</h3>
-        <p><b>R$ 49</b></p>
-        <p>✔ Treino básico</p>
-        <p>✔ Fundamentos</p>
-        <p>✔ 1x por semana</p>
-        <button>Escolher Plano</button>
+      <h3>Iniciante</h3>
+      <p><b>R$ 49</b></p>
+      <p>✔ Treino básico</p>
+      <p>✔ Fundamentos</p>
+      <p>✔ 1x por semana</p>
+      <!-- CORREÇÃO: botão conectado ao WhatsApp com mensagem do plano -->
+      <button onclick="window.open('https://wa.me/555189967258?text=Olá!+Tenho+interesse+no+plano+Iniciante+de+R$+49', '_blank')">
+        Escolher Plano
+      </button>
     </div>
 
     <div class="card destaque">
-        <h3>Intermediário</h3>
-        <p><b>R$ 89</b></p>
-        <p>✔ Treinos avançados</p>
-        <p>✔ Técnicas</p>
-        <p>✔ 2x por semana</p>
-        <button>Escolher Plano</button>
+      <h3>Intermediário</h3>
+      <p><b>R$ 89</b></p>
+      <p>✔ Treinos avançados</p>
+      <p>✔ Técnicas</p>
+      <p>✔ 2x por semana</p>
+      <button onclick="window.open('https://wa.me/555189967258?text=Olá!+Tenho+interesse+no+plano+Intermediário+de+R$+89', '_blank')">
+        Escolher Plano
+      </button>
     </div>
 
     <div class="card">
-        <h3>Avançado</h3>
-        <p><b>R$ 149</b></p>
-        <p>✔ Treino profissional</p>
-        <p>✔ Estratégias</p>
-        <p>✔ 3x por semana</p>
-        <button>Escolher Plano</button>
+      <h3>Avançado</h3>
+      <p><b>R$ 149</b></p>
+      <p>✔ Treino profissional</p>
+      <p>✔ Estratégias</p>
+      <p>✔ 3x por semana</p>
+      <button onclick="window.open('https://wa.me/555189967258?text=Olá!+Tenho+interesse+no+plano+Avançado+de+R$+149', '_blank')">
+        Escolher Plano
+      </button>
     </div>
 
-</div>
+  </div>
 
-<footer>
-© 2026 Volei Stars
-</footer>
+  <footer>
+    © 2026 Volei Stars
+  </footer>
 
-<a href="https://wa.me/555189967258" class="whatsapp-fixo">💬</a>
+  <!-- CORREÇÃO: title adicionado para acessibilidade -->
+  <a href="https://wa.me/555189967258" class="whatsapp-fixo" target="_blank" rel="noopener noreferrer" title="Falar no WhatsApp">
+    💬
+  </a>
 
 </body>
 </html>
