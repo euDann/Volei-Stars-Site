@@ -12,7 +12,7 @@
 <style>
 body {
     margin: 0;
-    font-family: Arial;
+    font-family: Arial, sans-serif;
     background: #212121;
     color: white;
 }
@@ -58,7 +58,6 @@ body {
     padding: 60px 20px;
 }
 
-/* FOTO PERFIL */
 .profile img {
     width: 220px;
     height: 220px;
@@ -68,11 +67,14 @@ body {
     box-shadow: 0 0 20px #00aaff;
 }
 
-/* TEXTOS */
 .profile h1 {
     margin: 20px 0 10px;
     color: #8ac6ff;
     text-shadow: 0 0 15px #00aaff;
+}
+
+.profile p {
+    opacity: 0.8;
 }
 
 /* SOCIAL */
@@ -88,39 +90,39 @@ body {
 }
 
 .social-box img {
-    width: 50px;
-}
-
-.social-box img {
     width: 40px;
     height: 40px;
     object-fit: contain;
+    filter: drop-shadow(0 0 5px #00aaff);
 }
 
 .social-box a {
     font-size: 30px;
     text-decoration: none;
     color: #8ac6ff;
+    line-height: 1;
 }
 
 /* WHATS */
 .whats {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 25px;
 }
 
 .whats p {
     margin-bottom: 10px;
     color: #8ac6ff;
+    font-size: 18px;
 }
 
 .whats button {
     padding: 12px 25px;
-    background: #00aaff;
+    background: linear-gradient(45deg, #00aaff, #0571d3);
     border: none;
     border-radius: 10px;
     color: white;
     cursor: pointer;
+    box-shadow: 0 0 10px #00aaff;
 }
 
 /* CARDS */
@@ -142,7 +144,7 @@ body {
 }
 
 .card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-10px) scale(1.02);
     box-shadow: 0 0 20px #00aaff;
 }
 
@@ -188,8 +190,9 @@ footer {
         height: 160px;
     }
 
-    .social-box a {
-        font-size: 22px;
+    .social-box img {
+        width: 25px;
+        height: 25px;
     }
 
 }
@@ -271,6 +274,6 @@ footer {
   <p>© 2026 Volei Stars. Todos os direitos reservados.</p>
   <p>Este site é apenas informativo. Valores podem variar.</p>
 </footer>
-
+<p>aaa</p>
 </body>
 </html>
