@@ -229,8 +229,7 @@
     @media (max-width: 768px) {
       .profile img { width: 160px; height: 160px; }
       .card { width: 90%; }
-      
-      /* Em mobile, muda para 2x2 para melhor visualização */
+    
       .mosaic {
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1fr;
@@ -314,17 +313,14 @@ const fotos = [
 const mosaic = document.getElementById('mosaic');
 const celulas = [];
 
-/* embaralha */
 function shuffle(array) {
   return array.sort(() => Math.random() - 0.5);
 }
 
-/* pega 4 imagens únicas */
 function pegarUnicas() {
   return shuffle([...fotos]).slice(0, 4);
 }
 
-/* inicia */
 let atuais = pegarUnicas();
 
 for (let i = 0; i < 4; i++) {
@@ -347,7 +343,6 @@ for (let i = 0; i < 4; i++) {
   celulas.push({ imgA, imgB, frenteAtual: true });
 }
 
-/* troca sem repetir lado a lado */
 setInterval(() => {
   let novas = pegarUnicas();
 
