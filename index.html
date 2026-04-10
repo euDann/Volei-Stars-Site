@@ -4,87 +4,97 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Volei Stars</title>
-
-  <!-- SEO -->
   <meta name="description" content="Volei Stars – Transformando jogadores em estrelas. Escolha seu plano de treino de vôlei e evolua com a gente!">
-
-  <!-- Open Graph (compartilhamento no WhatsApp, Instagram, etc.) -->
   <meta property="og:title" content="Volei Stars">
   <meta property="og:description" content="Transformando jogadores em estrelas ⭐. Conheça nossos planos de treino!">
   <meta property="og:type" content="website">
-
-  <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="Icon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="Icon/favicon-16x16.png">
   <link rel="shortcut icon" href="Icon/favicon.ico">
 
   <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
-      margin: 0;
       font-family: Arial, sans-serif;
-      background: #212121;
+      background: #0d0d1a;
       color: white;
       animation: fadeIn 1s ease-in;
+      overflow-x: hidden;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
 
-    /* FUNDO */
-    .background {
+    /* MOSAICO 1x4 (linha horizontal) */
+    .mosaic {
       position: fixed;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
+      inset: 0;
+      z-index: -2;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr;
+      gap: 4px;
+    }
+
+    .mosaic-cell {
+      position: relative;
       overflow: hidden;
     }
 
-    .background span {
+    .mosaic-cell img {
       position: absolute;
-      bottom: -50px;
-      width: 12px;
-      height: 12px;
-      background: rgba(138, 198, 255, 0.6);
-      border-radius: 50%;
-      animation: subir 6s linear infinite;
-      box-shadow: 0 0 10px #8ac6ff;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: brightness(0.5) saturate(0.8);
+      transition: opacity 1.2s ease-in-out;
     }
 
-    .background span:nth-child(1) { left: 10%; animation-delay: 0s; }
-    .background span:nth-child(2) { left: 25%; animation-delay: 1s; }
-    .background span:nth-child(3) { left: 40%; animation-delay: 2s; }
-    .background span:nth-child(4) { left: 60%; animation-delay: 3s; }
-    .background span:nth-child(5) { left: 75%; animation-delay: 4s; }
-    .background span:nth-child(6) { left: 90%; animation-delay: 5s; }
+    .mosaic-cell img.frente { opacity: 1; }
+    .mosaic-cell img.atras  { opacity: 0; }
 
-    @keyframes subir {
-      0%   { transform: translateY(0); opacity: 0; }
-      10%  { opacity: 1; }
-      100% { transform: translateY(-110vh); opacity: 0; }
+    /* Overlay */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(
+        to bottom,
+        rgba(10,10,20,0.60) 0%,
+        rgba(10,10,20,0.40) 40%,
+        rgba(10,10,20,0.75) 100%
+      );
     }
+
+    /* CONTEÚDO */
+    .content { position: relative; z-index: 1; }
 
     /* PERFIL */
     .profile {
       text-align: center;
-      padding: 60px 20px;
+      padding: 60px 20px 40px;
     }
 
     .profile img {
       width: 220px;
       height: 220px;
       border-radius: 50%;
-      object-fit: contain;
-      border: 3px solid #8ac6ff;
-      box-shadow: 0 0 20px #00aaff;
+      object-fit: cover;
+      border: 3px solid #ff8c00;
+      box-shadow: 0 0 30px rgba(255,140,0,0.7);
+      background: #1a1a2e;
     }
 
     .profile h1 {
       margin: 20px 0 10px;
-      color: #8ac6ff;
-      text-shadow: 0 0 15px #00aaff;
+      font-size: 2rem;
+      color: #ffb300;
+      text-shadow: 0 0 20px rgba(255,140,0,0.9);
+      letter-spacing: 2px;
     }
+
+    .profile > p { color: #ffe0a0; margin-top: 6px; }
 
     /* SOCIAL */
     .social-box {
@@ -95,133 +105,135 @@
       margin-top: 20px;
     }
 
-    .social-box img {
-      width: 35px;
-      height: 35px;
-    }
+    .social-box img { width: 28px; height: 28px; border-radius: 8px; }
 
     .social-box a {
-      font-size: 25px;
-      color: #8ac6ff;
+      font-size: 22px;
+      color: #ffb300;
       text-decoration: none;
     }
 
-    /* WHATS */
-    .whats {
-      margin-top: 20px;
-    }
+    /* WHATSAPP */
+    .whats { margin-top: 20px; }
+    .whats p { color: #ffe0a0; margin-bottom: 10px; }
 
     .whats button {
-      padding: 12px 25px;
-      background: linear-gradient(45deg, #00aaff, #0571d3);
+      padding: 12px 28px;
+      background: linear-gradient(45deg, #ff8c00, #ffb300);
       border: none;
       border-radius: 10px;
-      color: white;
-      cursor: pointer;
+      color: #0d0d1a;
+      font-weight: bold;
       font-size: 16px;
-      transition: opacity 0.2s;
+      cursor: pointer;
     }
 
-    .whats button:hover {
-      opacity: 0.85;
+    /* PACOTES */
+    .pacotes-titulo {
+      text-align: center;
+      color: #ffb300;
+      font-size: 1.5rem;
+      margin: 10px 0;
+      text-shadow: 0 0 12px rgba(255,140,0,0.6);
     }
 
-    /* CARDS */
     .cards {
       display: flex;
       justify-content: center;
       gap: 20px;
       flex-wrap: wrap;
-      padding: 40px 20px;
+      padding: 20px 20px 60px;
     }
 
     .card {
-      background: #2a2a2a;
-      padding: 20px;
-      border-radius: 15px;
+      background: rgba(13,13,26,0.80);
+      backdrop-filter: blur(8px);
+      padding: 24px 20px;
+      border-radius: 16px;
       width: 250px;
       text-align: center;
-      transition: 0.3s;
+      border: 1px solid rgba(255,140,0,0.2);
+      transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .card:hover {
       transform: translateY(-10px);
-      box-shadow: 0 0 20px #00aaff;
+      box-shadow: 0 0 25px rgba(255,140,0,0.45);
     }
 
-    .card h3 {
-      color: #8ac6ff;
+    .card h3 { color: #ffb300; }
+
+    .preco {
+      font-size: 2rem;
+      color: #ff8c00;
+      font-weight: bold;
+      margin: 8px 0;
     }
 
-    .card p:first-of-type {
-      font-size: 32px;
-      color: #00aaff;
-    }
+    .card p { color: #ffe0a0; margin: 6px 0; }
 
     .card button {
-      margin-top: 10px;
+      margin-top: 14px;
       padding: 10px;
       border: none;
-      background: #00aaff;
-      color: white;
+      background: linear-gradient(45deg, #ff8c00, #ffb300);
+      color: #0d0d1a;
+      font-weight: bold;
       border-radius: 8px;
       cursor: pointer;
       width: 100%;
-      font-size: 15px;
-      transition: opacity 0.2s;
     }
 
-    .card button:hover {
-      opacity: 0.85;
-    }
-
-    /* DESTAQUE */
     .destaque {
-      border: 2px solid #00aaff;
-      box-shadow: 0 0 15px #00aaff;
+      border: 2px solid #ff8c00;
+      box-shadow: 0 0 20px rgba(255,140,0,0.3);
     }
 
-    /* FOOTER */
+    .badge {
+      display: inline-block;
+      background: #ff8c00;
+      color: #0d0d1a;
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 8px;
+    }
+
     footer {
-      margin-top: 60px;
-      padding: 20px;
+      padding: 24px;
       text-align: center;
       font-size: 14px;
-      color: #8ac6ff;
+      color: #ffb300;
+      border-top: 1px solid rgba(255,140,0,0.15);
     }
 
-    /* BOTÃO FIXO */
     .whatsapp-fixo {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background: #00aaff;
-      color: white;
+      background: linear-gradient(45deg, #ff8c00, #ffb300);
+      color: #0d0d1a;
       font-size: 24px;
-      padding: 15px;
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       border-radius: 50%;
       text-decoration: none;
-      transition: transform 0.2s;
+      z-index: 10;
+      box-shadow: 0 0 15px rgba(255,140,0,0.5);
     }
 
-    .whatsapp-fixo:hover {
-      transform: scale(1.1);
-    }
-
-    /* MOBILE */
+    /* Responsivo para mobile */
     @media (max-width: 768px) {
-      .card {
-        width: 90%;
-      }
-
-      .profile img {
-        width: 160px;
-        height: 160px;
-      }
-
-      .social-box img {
-        width: 25px;
-        height: 25px;
+      .profile img { width: 160px; height: 160px; }
+      .card { width: 90%; }
+      
+      /* Em mobile, muda para 2x2 para melhor visualização */
+      .mosaic {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
       }
     }
   </style>
@@ -229,85 +241,132 @@
 
 <body>
 
-  <div class="background">
-    <span></span><span></span><span></span>
-    <span></span><span></span><span></span>
+  <!-- MOSAICO 1x4 -->
+  <div class="mosaic" id="mosaic"></div>
+  <div class="overlay"></div>
+
+  <div class="content">
+
+    <div class="profile">
+      <img src="Imagens/image_2026-04-08_184055219-removebg-preview.png" alt="Logo Volei Stars" loading="lazy">
+      <h1>Volei Stars</h1>
+      <p>Transformando jogadores em estrelas ⭐</p>
+
+      <div class="social-box">
+        <img src="Imagens/instagram-new.png" alt="Instagram" loading="lazy">
+        <a href="https://www.instagram.com/volei.stars/" target="_blank" rel="noopener noreferrer">@volei.stars</a>
+      </div>
+
+      <div class="whats">
+        <p>Tire suas dúvidas aqui</p>
+        <button onclick="window.open('https://wa.me/555189967258', '_blank')">Falar no WhatsApp</button>
+      </div>
+    </div>
+
+    <h2 class="pacotes-titulo">Confira nossos pacotes</h2>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Iniciante</h3>
+        <div class="preco">R$ 49</div>
+        <p>✔ Treino básico</p>
+        <p>✔ Fundamentos</p>
+        <p>✔ 1x por semana</p>
+        <button onclick="window.open('https://wa.me/555189967258?text=Plano+Iniciante')">Escolher</button>
+      </div>
+
+      <div class="card destaque">
+        <span class="badge">MAIS POPULAR</span>
+        <h3>Intermediário</h3>
+        <div class="preco">R$ 89</div>
+        <p>✔ Treinos avançados</p>
+        <p>✔ Técnicas</p>
+        <p>✔ 2x por semana</p>
+        <button onclick="window.open('https://wa.me/555189967258?text=Plano+Intermediario')">Escolher</button>
+      </div>
+
+      <div class="card">
+        <h3>Avançado</h3>
+        <div class="preco">R$ 149</div>
+        <p>✔ Treino profissional</p>
+        <p>✔ Estratégias</p>
+        <p>✔ 3x por semana</p>
+        <button onclick="window.open('https://wa.me/555189967258?text=Plano+Avancado')">Escolher</button>
+      </div>
+    </div>
+
+    <footer>© 2026 Volei Stars</footer>
   </div>
 
-  <div class="profile">
+  <a href="https://wa.me/555189967258" class="whatsapp-fixo" title="Falar no WhatsApp">💬</a>
 
-    <!-- CORREÇÃO: alt adicionado na imagem de perfil -->
-    <img src="Imagens/image_2026-04-08_184055219-removebg-preview.png" alt="Logo Volei Stars" loading="lazy">
+  <script>
+const fotos = [
+  'Imagens/WhatsApp Image 2026-04-09 at 17.43.49.jpeg',
+  'Imagens/WhatsApp Image 2026-04-09 at 17.43.49 (1).jpeg',
+  'Imagens/WhatsApp Image 2026-04-09 at 17.43.49 (2).jpeg',
+  'Imagens/WhatsApp Image 2026-04-09 at 17.43.49 (3).jpeg',
+  'Imagens/WhatsApp Image 2026-04-09 at 17.43.49 (4).jpeg',
+  'Imagens/WhatsApp Image 2026-04-09 at 17.43.49 (5).jpeg',
+  'Imagens/WhatsApp Image 2026-04-09 at 17.43.49 (6).jpeg',
+];
 
-    <h1>Volei Stars</h1>
-    <p>Transformando jogadores em estrelas ⭐</p>
+const mosaic = document.getElementById('mosaic');
+const celulas = [];
 
-    <div class="social-box">
-      <!-- CORREÇÃO: alt adicionado no ícone do Instagram -->
-      <img src="Imagens/Blackvariant-Button-Ui-Requests-14-Instagram.512.png" alt="Instagram" loading="lazy">
-      <a href="https://www.instagram.com/volei.stars/" target="_blank" rel="noopener noreferrer">
-        @volei.stars
-      </a>
-    </div>
+/* embaralha */
+function shuffle(array) {
+  return array.sort(() => Math.random() - 0.5);
+}
 
-    <div class="whats">
-      <p>Tire suas dúvidas aqui</p>
-      <!-- CORREÇÃO: <a> dentro de <button> substituído por button com onclick -->
-      <button onclick="window.open('https://wa.me/555189967258', '_blank')">
-        Falar no WhatsApp
-      </button>
-    </div>
+/* pega 4 imagens únicas */
+function pegarUnicas() {
+  return shuffle([...fotos]).slice(0, 4);
+}
 
-  </div>
+/* inicia */
+let atuais = pegarUnicas();
 
-  <h2 style="text-align:center;">Confira nossos pacotes</h2>
+for (let i = 0; i < 4; i++) {
+  const cell = document.createElement('div');
+  cell.className = 'mosaic-cell';
 
-  <div class="cards">
+  const imgA = document.createElement('img');
+  const imgB = document.createElement('img');
 
-    <div class="card">
-      <h3>Iniciante</h3>
-      <p><b>R$ 49</b></p>
-      <p>✔ Treino básico</p>
-      <p>✔ Fundamentos</p>
-      <p>✔ 1x por semana</p>
-      <!-- CORREÇÃO: botão conectado ao WhatsApp com mensagem do plano -->
-      <button onclick="window.open('https://wa.me/555189967258?text=Olá!+Tenho+interesse+no+plano+Iniciante+de+R$+49', '_blank')">
-        Escolher Plano
-      </button>
-    </div>
+  imgA.src = atuais[i];
+  imgB.src = atuais[(i + 1) % 4];
 
-    <div class="card destaque">
-      <h3>Intermediário</h3>
-      <p><b>R$ 89</b></p>
-      <p>✔ Treinos avançados</p>
-      <p>✔ Técnicas</p>
-      <p>✔ 2x por semana</p>
-      <button onclick="window.open('https://wa.me/555189967258?text=Olá!+Tenho+interesse+no+plano+Intermediário+de+R$+89', '_blank')">
-        Escolher Plano
-      </button>
-    </div>
+  imgA.className = 'frente';
+  imgB.className = 'atras';
 
-    <div class="card">
-      <h3>Avançado</h3>
-      <p><b>R$ 149</b></p>
-      <p>✔ Treino profissional</p>
-      <p>✔ Estratégias</p>
-      <p>✔ 3x por semana</p>
-      <button onclick="window.open('https://wa.me/555189967258?text=Olá!+Tenho+interesse+no+plano+Avançado+de+R$+149', '_blank')">
-        Escolher Plano
-      </button>
-    </div>
+  cell.appendChild(imgA);
+  cell.appendChild(imgB);
+  mosaic.appendChild(cell);
 
-  </div>
+  celulas.push({ imgA, imgB, frenteAtual: true });
+}
 
-  <footer>
-    © 2026 Volei Stars
-  </footer>
+/* troca sem repetir lado a lado */
+setInterval(() => {
+  let novas = pegarUnicas();
 
-  <!-- CORREÇÃO: title adicionado para acessibilidade -->
-  <a href="https://wa.me/555189967258" class="whatsapp-fixo" target="_blank" rel="noopener noreferrer" title="Falar no WhatsApp">
-    💬
-  </a>
+  celulas.forEach((c, i) => {
+    if (c.frenteAtual) {
+      c.imgB.src = novas[i];
+      c.imgA.className = 'atras';
+      c.imgB.className = 'frente';
+    } else {
+      c.imgA.src = novas[i];
+      c.imgB.className = 'atras';
+      c.imgA.className = 'frente';
+    }
+
+    c.frenteAtual = !c.frenteAtual;
+  });
+
+}, 3000);
+</script>
 
 </body>
 </html>
